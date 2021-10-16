@@ -1,10 +1,20 @@
+"""
+Pytest module
+"""
 from hw1.tic_tac_toe import TicTacGame, GameOverPlayerWinException
 import pytest
 
 
-class TestClass(object):
+class TestClass:
+    """
+    Test class
+    """
 
     def test_one(self):
+        """
+        One test step
+        :return:
+        """
         game = TicTacGame(TicTacGame.GameMode.PVP, "3", "Player 1", "Player 2")
 
         user_input = "0"
@@ -14,6 +24,10 @@ class TestClass(object):
         assert game.play_board[0] == 'o'
 
     def test_missing_values(self):
+        """
+        Missing values
+        :return:
+        """
         game = TicTacGame(TicTacGame.GameMode.PVP, "", "", "")
 
         assert game.play_board_size == 3
@@ -21,6 +35,10 @@ class TestClass(object):
         assert game.player_2 == 'Player 2'
 
     def test_first_wins(self):
+        """
+        First player wins
+        :return:
+        """
         game = TicTacGame(TicTacGame.GameMode.PVP, "3", "M", "K")
 
         # first move
@@ -50,6 +68,10 @@ class TestClass(object):
             game.make_turn(index)
 
     def test_second_wins(self):
+        """
+        Second player wins
+        :return:
+        """
         game = TicTacGame(TicTacGame.GameMode.PVP, "3", "M", "K")
 
         # first move
@@ -84,6 +106,10 @@ class TestClass(object):
             game.make_turn(index)
 
     def test_draw(self):
+        """
+        Draw
+        :return:
+        """
         game = TicTacGame(TicTacGame.GameMode.PVP, "3", "Mike", "Kate")
 
         # first move
