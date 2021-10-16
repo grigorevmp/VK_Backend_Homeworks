@@ -139,12 +139,12 @@ class TicTacGame:
         :return: New index
         """
         if not user_input.isdigit():
-            raise NotDigitIOException
+            raise NotDigitIOException()
         index = int(user_input)
         if index > 9 or index < 0:
-            raise DigitOutOfRangeIOException
+            raise DigitOutOfRangeIOException()
         if self.play_board[index] != ' ':
-            raise IndexIsAlreadySetException
+            raise IndexIsAlreadySetException()
         return index
 
     def is_free_cells(self):
@@ -181,7 +181,7 @@ class TicTacGame:
             try:
                 self.get_enemy_move()
             except GameOverDrawException:
-                raise GameOverDrawException from Exception
+                raise GameOverDrawException() from Exception
 
     def start_game(self):
         """
@@ -234,35 +234,35 @@ class TicTacGame:
         # first row
         if self.play_board[:3].count(cell_to_win) == 3:
             self.mark_won_cells(0, 1, 2)
-            raise GameOverPlayerWinException
+            raise GameOverPlayerWinException()
         # second row
         if self.play_board[3:6].count(cell_to_win) == 3:
             self.mark_won_cells(3, 4, 5)
-            raise GameOverPlayerWinException
+            raise GameOverPlayerWinException()
         # third row
         if self.play_board[6:].count(cell_to_win) == 3:
             self.mark_won_cells(6, 7, 8)
-            raise GameOverPlayerWinException
+            raise GameOverPlayerWinException()
         # first column
         if self.play_board[0] == self.play_board[3] == self.play_board[6] == cell_to_win:
             self.mark_won_cells(0, 3, 6)
-            raise GameOverPlayerWinException
+            raise GameOverPlayerWinException()
         # second column
         if self.play_board[1] == self.play_board[4] == self.play_board[7] == cell_to_win:
             self.mark_won_cells(1, 4, 7)
-            raise GameOverPlayerWinException
+            raise GameOverPlayerWinException()
         # third column
         if self.play_board[2] == self.play_board[5] == self.play_board[8] == cell_to_win:
             self.mark_won_cells(2, 5, 8)
-            raise GameOverPlayerWinException
+            raise GameOverPlayerWinException()
         # prime diagonal
         if self.play_board[0] == self.play_board[4] == self.play_board[8] == cell_to_win:
             self.mark_won_cells(0, 4, 8)
-            raise GameOverPlayerWinException
+            raise GameOverPlayerWinException()
         # minor diagonal
         if self.play_board[2] == self.play_board[4] == self.play_board[6] == cell_to_win:
             self.mark_won_cells(2, 4, 6)
-            raise GameOverPlayerWinException
+            raise GameOverPlayerWinException()
 
 
 if __name__ == '__main__':
